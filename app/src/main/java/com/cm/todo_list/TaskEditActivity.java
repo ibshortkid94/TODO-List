@@ -26,6 +26,6 @@ public class TaskEditActivity extends  AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.taskedit);
 
-        
+
     }
 }
