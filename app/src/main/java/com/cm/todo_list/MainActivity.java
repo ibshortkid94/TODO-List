@@ -3,36 +3,31 @@
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+
 import java.util.ArrayList;
 
  public class MainActivity extends AppCompatActivity {
      private ListView lv;
+
+     final ArrayList <PrimaryTask> pt = new ArrayList<>();
+     ArrayList items = new ArrayList();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final ArrayList items = new ArrayList();
+
 
 
         lv = (ListView) findViewById(R.id.list);
@@ -67,6 +62,11 @@ import java.util.ArrayList;
                                 String text = input.getText().toString();
                                 if (text != ""){
                                     items.add(text);
+                                    PrimaryTask t = new PrimaryTask();
+                                    t.setTitle(text);
+                                    pt.add(t);
+                                    arrayAdapter.notifyDataSetChanged();
+                                    arrayAdapter.notifyDataSetInvalidated();
                                 }
 
                             }
@@ -84,7 +84,7 @@ import java.util.ArrayList;
 
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int pos, long id) {
 
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
                 alertDialog.setTitle("Delete");
@@ -97,6 +97,7 @@ import java.util.ArrayList;
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 items.remove(position);
+                                pt.remove(position);
                                 arrayAdapter.notifyDataSetChanged();
                                 arrayAdapter.notifyDataSetInvalidated();
                             }
