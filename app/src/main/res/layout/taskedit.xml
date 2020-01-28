@@ -38,11 +38,11 @@
             android:text="Add SubTask" />
 
         <Button
-            android:id="@+id/back"
+            android:id="@+id/complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Back" />
+            android:text="Set Complete" />
     </LinearLayout>
 
 </LinearLayout>

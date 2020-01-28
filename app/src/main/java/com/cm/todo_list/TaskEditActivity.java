@@ -41,10 +41,10 @@ public class TaskEditActivity extends  AppCompatActivity{
         desc.setText(pt.description);
 
         //back
-        Button back = (Button) findViewById(R.id.back);
+        Button back = (Button) findViewById(R.id.complete);
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //back code
+                //set complete code
             }
         });
 

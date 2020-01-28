@@ -96,26 +96,40 @@ import java.util.ArrayList;
                 Intent edit = new Intent(MainActivity.this, TaskEditActivity.class);
                 edit.putExtra("taskObject", pt.get(position));
                 startActivity(edit);
-
-                //alertDialog.setPositiveButton("Yes",
-                 //       new DialogInterface.OnClickListener() {
-                  //          @Override
-                    //        public void onClick(DialogInterface dialog, int which) {
-                      //          items.remove(position);
-                        //        pt.remove(position);
-                          //      arrayAdapter.notifyDataSetChanged();
-                            //    arrayAdapter.notifyDataSetInvalidated();
-                            //}
-                        //});
-
-                //alertDialog.setNegativeButton("No",
-                //        new DialogInterface.OnClickListener() {
-                //            public void onClick(DialogInterface dialog, int which) {
-                //                dialog.cancel();
-                //            }
-                //        });
-                //alertDialog.show();
             }
         });
+
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int pos, long id) {
+
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+                alertDialog.setTitle("Delete");
+                alertDialog.setMessage("Really Delete?");
+
+                final int position = pos;
+
+                alertDialog.setPositiveButton("Yes",
+                      new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            items.remove(position);
+                            pt.remove(position);
+                            arrayAdapter.notifyDataSetChanged();
+                            arrayAdapter.notifyDataSetInvalidated();
+                }
+                });
+
+                alertDialog.setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                alertDialog.show();
+                return true;
+            }
+        });
+
     }
 }
