@@ -15,8 +15,8 @@ public class PrimaryTask implements Parcelable {
     ArrayList <SubTask>subTask;
     String key;
     public PrimaryTask(){
-        title = "";
-        description = "";
+        title = "Title";
+        description = "Description";
         complete = false;
         subTask = new ArrayList();
         sub = new SubTask();

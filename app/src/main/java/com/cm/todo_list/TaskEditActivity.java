@@ -40,5 +40,20 @@ public class TaskEditActivity extends  AppCompatActivity{
         TextView desc = (TextView) findViewById((R.id.description));
         desc.setText(pt.description);
 
+        //back
+        Button back = (Button) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //back code
+            }
+        });
+
+        //add subtask
+        Button sub = (Button) findViewById(R.id.add_sub);
+        back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //add subtask code
+            }
+        });
     }
 }
