@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -82,9 +83,9 @@ import java.util.ArrayList;
             }
         });
 
-        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int pos, long id) {
+            public void onItemClick(AdapterView<?> arg0, View arg1, final int pos, long id) {
 
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
                 alertDialog.setTitle("Delete");
@@ -92,25 +93,28 @@ import java.util.ArrayList;
 
                 final int position = pos;
 
-                alertDialog.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                items.remove(position);
-                                pt.remove(position);
-                                arrayAdapter.notifyDataSetChanged();
-                                arrayAdapter.notifyDataSetInvalidated();
-                            }
-                        });
+                Intent edit = new Intent(MainActivity.this, TaskEditActivity.class);
+                edit.putExtra("taskObject", pt.get(position));
+                startActivity(edit);
 
-                alertDialog.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-                alertDialog.show();
-                return true;
+                //alertDialog.setPositiveButton("Yes",
+                 //       new DialogInterface.OnClickListener() {
+                  //          @Override
+                    //        public void onClick(DialogInterface dialog, int which) {
+                      //          items.remove(position);
+                        //        pt.remove(position);
+                          //      arrayAdapter.notifyDataSetChanged();
+                            //    arrayAdapter.notifyDataSetInvalidated();
+                            //}
+                        //});
+
+                //alertDialog.setNegativeButton("No",
+                //        new DialogInterface.OnClickListener() {
+                //            public void onClick(DialogInterface dialog, int which) {
+                //                dialog.cancel();
+                //            }
+                //        });
+                //alertDialog.show();
             }
         });
     }
