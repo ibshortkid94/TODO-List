@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SearchRecentSuggestionsProvider;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,14 +31,18 @@ public class TaskEditActivity extends  AppCompatActivity{
         //get data from intent
         Intent edit = getIntent();
         final PrimaryTask pt = getIntent().getParcelableExtra("taskObject");
-        ArrayList items = pt.subTask;
+        ArrayList<String> items = new ArrayList<>();
+        for (SubTask s: pt.subTask) {
+            items.add(s.title);
+        }
+        final ArrayList<String> titles = new ArrayList<>();
 
         lv = (ListView) findViewById(R.id.subtasks);
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
-                items);
+                titles);
 
         lv.setAdapter(arrayAdapter);
 
@@ -76,6 +81,8 @@ public class TaskEditActivity extends  AppCompatActivity{
                                 String text = input.getText().toString();
                                 if (text != ""){
                                     pt.addSub(text);
+                                    titles.add(text);
+                                    Log.d("Text: ",text);
                                     arrayAdapter.notifyDataSetChanged();
                                     arrayAdapter.notifyDataSetInvalidated();
                                 }

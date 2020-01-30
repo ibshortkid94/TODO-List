@@ -3,6 +3,8 @@ package com.cm.todo_list;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 import java.nio.charset.Charset;
 import java.util.Random;
 
@@ -64,5 +66,11 @@ public class SubTask implements Parcelable {
         dest.writeString(title);
         dest.writeByte((byte) (completed == null ? 0 : completed ? 1 : 2));
         dest.writeString(key);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return title;
     }
 }
