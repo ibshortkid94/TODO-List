@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,33 +11,42 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/name" />
+        android:text="Name"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:layout_weight="1"/>
 
     <EditText
         android:id="@+id/description"
         android:layout_width="match_parent"
-        android:layout_height="218dp"
+        android:layout_height="0dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:text="@string/description"/>
+        android:layout_weight="7"/>
 
     <ListView
         android:id="@+id/subtasks"
         android:layout_width="match_parent"
-        android:layout_height="407dp" />
+        android:layout_height="0dp"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:layout_weight="10"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
 
         <Button
             android:id="@+id/add_sub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add SubTask" />
+            android:text="Add Subtask" />
 
         <Button
             android:id="@+id/complete"
@@ -44,5 +55,4 @@
             android:layout_weight="1"
             android:text="Set Complete" />
     </LinearLayout>
-
 </LinearLayout>
