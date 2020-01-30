@@ -2,6 +2,7 @@ package com.cm.todo_list;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.EditText;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;

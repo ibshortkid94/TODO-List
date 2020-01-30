@@ -46,7 +46,7 @@ import java.util.ArrayList;
             public void onClick(View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
                 alertDialog.setTitle("Add Item");
-                alertDialog.setMessage("Add something to the list");
+                alertDialog.setMessage("Add a Primary Task");
 
                 final EditText input = new EditText(MainActivity.this);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
